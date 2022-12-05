@@ -1,4 +1,5 @@
 import { dbUsers } from ".."
+import { Iuser } from "../controllers/UserController"
 
 export class UserService {
 
@@ -13,5 +14,9 @@ export class UserService {
     }
     getAllUsers = () =>{
         return dbUsers;
+    }
+    deleteUser =(user: Iuser)=>{
+       let dbUsersFilter =  dbUsers.filter(item => item.name  === user.name)
+    
     }
 }

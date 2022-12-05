@@ -1,7 +1,7 @@
 import { Request, Response} from "express"
 import { UserService} from "../services/UserService"
 
-interface Iuser  {
+export interface Iuser  {
    name: string; 
    email: string    
 }
@@ -21,5 +21,12 @@ export class UserController {
     getAllUsers = (request : Request, response: Response) =>{
         const userService = new UserService();
         const users = userService.getAllUsers()
-        return response.status(200).json(users)   }
+        return response.status(200).json(users)   
+    }
+    deleteUser = ( request: Request, response : Response )=>{
+        const user = request.body  as Iuser
+        const deleteUser = new UserService();
+        deleteUser.deleteUser(user);
+        
+    }
 }
